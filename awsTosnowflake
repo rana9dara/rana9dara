@@ -1,0 +1,16 @@
+#creating stage
+CREATE STAGE my_s3_stage
+URL='s3://your-bucket-name'
+CREDENTIALS=(AWS_KEY_ID='your_access_key_id' AWS_SECRET_KEY='your_secret_access_key');
+
+#creating SnowPipe
+CREATE PIPE my_s3_pipe
+AUTO_INGEST=TRUE
+SOURCE=(TYPE=CSV FORMAT=(FIELD_DELIMITER=',') FIELD_OPTION=(TRIM_SPACE=TRUE))
+TARGET=(TABLE=my_target_table)
+STAGE='my_s3_stage';
+
+#Load from stage
+COPY INTO my_target_table
+FROM (SELECT * FROM my_s3_stage)
+FILE_FORMAT=(TYPE=CSV FIELD_DELIMITER=',');
