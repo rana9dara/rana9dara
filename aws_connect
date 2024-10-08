@@ -9,7 +9,7 @@ session = boto3.Session(
 s3 = session.client('s3')
 
 # List objects in the bucket
-response = s3.list_objects(Bucket='my-bucket')
+response = s3.list_objects(Bucket='my-bucket',Prefix='prefix')
 for obj in response['Contents']:
     print(obj['Key'])
 
