@@ -1,0 +1,20 @@
+import boto3
+
+session = boto3.Session(
+    aws_access_key_id='your_access_key_id',
+    aws_secret_access_key='your_secret_access_key',
+    endpoint_url='https://your-vpc-endpoint-url.s3.amazonaws.com'
+)
+
+s3 = session.client('s3')
+
+# List objects in the bucket
+response = s3.list_objects(Bucket='my-bucket')
+for obj in response['Contents']:
+    print(obj['Key'])
+
+# Upload a file to the bucket
+s3.upload_file('local_file.txt', 'my-bucket', 'remote_file.txt')
+
+# Download a file from the bucket
+s3.download_file('my-bucket', 'remote_file.txt', 'local_file.txt')
