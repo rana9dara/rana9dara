@@ -1,0 +1,8 @@
+{
+
+"parameters": {
+"set_mapping_threshold_score": 0.55,
+"standardization_file_exists": false
+} 
+
+}

@@ -1,0 +1,17 @@
+{
+  "Include": [
+    {
+      "ZS_Project_Code": "9902ZS3747",
+      "ClientName": "BigDataPod"
+    }
+  ],
+  "Exclude": {
+    "ClusterId": [""],
+    "Tags": [{"Name": "TestCluster"}]
+  },
+  "aws_region": "us-east-1",
+  "IdleTimeOut": 15
+}
+
+
+

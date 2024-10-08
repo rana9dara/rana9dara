@@ -1,0 +1,9 @@
+{
+      "host": "aws-a0199-use1-00-d-rds-snfi-cus-pgs01.caflpo0ssjqf.us-east-1.rds.amazonaws.com",
+      "port": "5432",
+      "username": "a1da0199cusappsnfi01u",
+      "password": "arn:aws:secretsmanager:us-east-1:881414793107:secret:aws-a0199-use1-1a-d-sem-snfi-ctf-pgs01-WkXiJ1",
+      "database_name": "dev_snfi_a0199_cus_01",
+      "environment" : "dev"
+}
+

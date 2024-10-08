@@ -1,0 +1,16 @@
+{
+  "s3_base_path": "s3://aws-a0049-use1-00-d-s3b-bpod-bdp-data01/airflow_backup",
+  "environment": "dev",
+  "full_backup": true,
+  "tag_name": "airflow_restore_tag",
+  "mysql_connection_details": {
+    "username": "root",
+    "password": "dev/cc/airflow",
+    "host": "0.0.0.0",
+    "db_name": "airflow",
+    "port": 3306
+  },
+  "airflow_home_dir": "/usr/lib/airflow",
+  "s3_region": "us-east-1",
+  "cleanup": true
+}

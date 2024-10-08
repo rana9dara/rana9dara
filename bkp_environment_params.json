@@ -1,0 +1,205 @@
+
+{
+  "@CommentsHeader": {
+    "JSON-Instance": "ingestion_environment_params.json",
+    "Purpose": "This json is used to define the Ingestion-level global variables hadoop options/s3 disct cp options can be provided depending on versions",
+    "Created by": "ZS Associates",
+    "Created on": "1st February 2021",
+    "Consuming module": "All Python modules",
+    "Last changed on": "",
+    "Last changed by": "",
+    "Reason for change": ""
+  },
+  "EnvironmentParams": {
+    "environment": "DEV",
+    "env": "dev",
+    "environment_logging": "",
+    "logging_elk_host": "",
+    "logging_elk_port": "",
+    "kibana_port": "",
+    "hive_port": "",
+    "mysql_host": "aws-a0199-use1-00-d-aur-snfi-cus-mys01.cluster-caflpo0ssjqf.us-east-1.rds.amazonaws.com",
+    "s3_bucket_name": "aws-a0199-use1-00-d-s3b-snfi-ctf-data01",
+    "mysql_port": "3306",
+    "mysql_username": "a1da0199cusappsnfi01u",
+    "mysql_password": "",
+    "mysql_db": "audit_information",
+    "cluster_mode": "EMR",
+    "s3_region": "us-east-1",
+    "rds_password_secret_name": "arn:aws:secretsmanager:us-east-1:881414793107:secret:aws-a0199-use1-1a-d-sem-snfi-ctf-mys01-eKx0DG",
+    "aws_region": "us-east-1",
+    "spline_enable_flag": "N",
+    "s3_region_endpoint": "s3-us-east-1.amazonaws.com",
+    "keytab_file": "",
+    "kerberos_principal": "",
+    "spark_max_thread_limit": 2,
+    "emr_code_path": "/app/clinical_design_center/data_management/sanofi_ctfo/code",
+    "private_key_loaction": "/app/key-pair/aws-a0199-use1-00-d-kpr-snfi-ctf-emr01.pem",
+    "ses_region": "us-east-1",
+    "email_template_path": "/app/clinical_design_center/data_management/sanofi_ctfo/code",
+    "email_type_configurations": {
+      "batch_status": {
+        "template_name": "ingestion_status.html",
+        "subject": "[$$env$$] Data Ingestion Process: $$status$$",
+        "ses_sender": "",
+        "ses_recipient_list": [
+          
+        ],
+        "notification_flag": "N"
+      },
+      "dqm": {
+        "template_name": "dqm_status.html",
+        "subject": "[$$env$$] Data Ingestion Process: DQM SUMMARY",
+        "ses_sender": "",
+        "ses_recipient_list": [
+          
+        ],
+        "notification_flag": "N"
+      },
+      "cycle_status": {
+        "template_name": "dw_status.html",
+        "subject": "[$$env$$] DW Process: $$status$$",
+        "ses_sender": "",
+        "ses_recipient_list": [
+          
+        ],
+        "notification_flag": "N"
+      },
+      "ganglia_report": {
+        "template_name": "Ganglia_Report_Template.html",
+        "subject": "[$$env$$] Ganglia report for cluster: $$master_node_dns$$",
+        "ses_sender": "",
+        "ses_recipient_list": [
+          
+        ]
+      },
+      "auto_terminate": {
+        "subject": "[URGENT] - Action Required - Long Running EMRs detected",
+        "ses_sender": "",
+        "ses_recipient_list": [
+          
+        ]
+      },
+      "orphan_terminate": {
+        "subject": "[CC] Orphan EMR Clusters Termination",
+        "ses_sender": "",
+        "ses_recipient_list": [
+          
+        ]
+      }
+    },
+    "dqm_s3_error_location": "s3://aws-a0199-use1-00-d-s3b-snfi-ctf-data01/clinical-data-lake/dqm/dqm_error_details",
+    "dqm_s3_summary_location": "s3://aws-a0199-use1-00-d-s3b-snfi-ctf-data01/clinical-data-lake/dqm/dqm_summary",
+    "validation_s3_error_location": "/$$env/applications/dqm/dqm_summary",
+    "spark_logs_s3_path": "s3://aws-a0199-use1-00-d-s3b-snfi-ctf-data01/sparklogs/sparkapphistory/",
+    "redshift_params": {
+      "SERVER": {
+        "host": "",
+        "port": 5439,
+        "user": "",
+        "redshift_password_secret_name": "",
+        "db": "redshiftbdpod",
+        "iam_role": "",
+        "s3_access_key": "",
+        "s3_secret_key": "",
+        "ssl": "True",
+        "cluster": "",
+        "interval": "10 min",
+        "region": "us-east-1",
+        "debug": "True"
+      },
+      "APPLICATION": {
+        "s3_bucket": "aws-a0199-use1-00-d-s3b-snfi-ctf-data01",
+        "table_format": "parquet",
+        "delimiter": "|",
+        "retry_limit": 5,
+        "timeout": 120000000
+      }
+    },
+    "wlm_params": {
+      "APPLICATION": {
+        "aws_region": "us-east-1",
+        "parameter_group": "redshift-dev"
+      }
+    }
+  },
+  "hadoop_options": {
+    "fs.s3a.multipart.uploads.enabled": "",
+    "fs.s3a.multipart.uploads.block.size": "",
+    "mapred.job.queue.name": "",
+    "fs.s3a.server-side-encryption-algorithm": "",
+    "mapreduce.map.memory.mb": "",
+    "mapreduce.reduce.memory.mb": ""
+  },
+  "s3_distcp__options": {
+    "multipartUploadChunkSize": "",
+    "outputCodec": "",
+    "s3Endpoint": "",
+    "storageClass": ""
+  },
+  "adapter_details": {
+    "generic_config": {
+      "local_temp_path": "/tmp/DI/",
+      "s3_temp_path": "s3://$$s3_bucket_name/clinical_data_lake/temp/"
+    },
+    "trialtrove": {
+      "cluster_type": "small",
+      "get_token_url": "https://identity.pharmaintelligence.informa.com/connect/token",
+      "landing_path": "s3://$$s3_bucket_name/clinical_data_lake/data/landing/lnd_trials_trialtrove",
+      "delta_refresh": "feed/trial/changes",
+      "landing_table_name": "lnd_trials_trialtrove",
+      "token_header": "Basic Y3VzdG9tZXJfYXBpX2NsaWVudF9uYXRpdmU6NTIwNzhjMGItMTI5Mi00MGVhLWFkYjAtOWE4MWY4OGNjZDMy",
+      "token_pay_load": {
+        "username": "neelakshi.kulkarni@zs.com",
+        "scope": "customer-api",
+        "password": "YXByQDIwMTg=",
+        "grant_type": "password"
+      },
+      "search_api_url": "search/trial",
+      "full_load": "feed/trial",
+      "host_url": "https://api.pharmaintelligence.informa.com/v1/",
+      "prelanding_path": "s3://$$s3_bucket_name/clinical_data_lake/data/pre_landing/trialtrove",
+      "execution_module": "DataIngestionAdapter",
+      "s3_trialrove_spark_query_path": "s3://$$s3_bucket_name/clinical_data_lake/config/trialtrove.sql",
+      "s3_trialtrove_schema_path": "s3://$$s3_bucket_name/clinical_data_lake/config/trialtrove_schema.json"
+    },
+    "organization": {
+      "bearer_token": "",
+      "schema_path": "",
+      "parquet_query": ""
+    },
+    "pharmaproject": {
+      "bearer_token": "",
+      "schema_path": "",
+      "parquet_query": ""
+    },
+    "investigator": {
+      "bearer_token": "",
+      "schema_path": "",
+      "parquet_query": ""
+    },
+    "ct_gov": {
+      "bearer_token": "",
+      "schema_path": "",
+      "parquet_query": ""
+    },
+    "aact": {
+      "bearer_token": "",
+      "schema_path": "",
+      "parquet_query": ""
+    },
+    "pubmed": {
+      "bearer_token": "",
+      "schema_path": "",
+      "parquet_query": ""
+    }
+  },
+  "airflow_config":{
+    "db_host" : "0.0.0.0",
+    "db_port" : "3306",
+    "db_username" : "root",
+    "db_password" : "test1",
+    "db_name" : "airflow"
+  }
+}
+

@@ -1,0 +1,267 @@
+
+
+
+{
+  "@CommentsHeader": {
+    "JSON-Instance": "ingestor_environment_params.json",
+    "Purpose": "This json is used to define the Ingestion-level global variables hadoop options/s3 disct cp options can be provided depending on versions",
+    "Created by": "ZS Associates",
+    "Created on": "1st February 2021",
+    "Consuming module": "All Python modules",
+    "Last changed on": "1st February 2021",
+    "Last changed by": "Himanshi",
+    "Reason for change": "Development of config"
+  },
+  "adapter_details": {
+    "generic_config": {
+      "local_temp_path": "/tmp/DI/",
+      "s3_temp_path": "s3://aws-a0199-use1-00-d-s3b-snfi-ctf-data01/clinical-data-lake/sanofi_ctfo/temp/",
+      "emr_code_path": "/app/clinical_design_center/data_management/sanofi_ctfo/",
+      "env": "dev",
+      "mysql_host": "aws-a0199-use1-00-d-aur-snfi-cus-mys01.cluster-caflpo0ssjqf.us-east-1.rds.amazonaws.com",
+      "s3_bucket_name": "aws-a0199-use1-00-d-s3b-snfi-ctf-data01",
+      "mysql_port": "3306",
+      "mysql_username": "a1da0199cusappsnfi01u",
+      "mysql_password": "",
+          "rds_password_secret_name": "arn:aws:secretsmanager:us-east-1:881414793107:secret:aws-a0199-use1-1a-d-sem-snfi-ctf-mys01-eKx0DG",
+      "mysql_db": "audit_information",
+      "cluster_mode": "EMR",
+      "s3_region": "us-east-1",
+      "aws_region": "us-east-1",
+      "s3_region_endpoint": "s3-us-east-1.amazonaws.com",
+      "private_key_loaction": "/home/svc_sanofi_appuser/key-pair/aws-a0199-use1-00-d-kpr-snfi-ctf-emr01.pem",
+      "ses_region": "us-east-1"
+    },
+    "who": {
+      "cluster_type": "small",
+      "local_path": "/appdata/ctfo/qa/v0_0_1/code/adaptor/who/",
+      "who_url": "http://apps.who.int/trialsearch/",
+      "create_investigator_table": "Y",
+      "who_disease_filter": {
+        "who_file_names": [
+          "ICTRP-Results_disease_area"
+        ],
+        "who_lynx_names": "ICTRP-Results_disease_area;disease_area.txt"
+      },
+      "who_phase_filter": {
+        "phase0": {
+          "who_file_names": [
+            "ICTRP-Results0"
+          ],
+          "who_lynx_names": "ICTRP-Results0;phase0.txt"
+        },
+        "phase1": {
+          "who_file_names": [
+            "ICTRP-Results1"
+          ],
+          "who_lynx_names": "ICTRP-Results1;phase1.txt"
+        },
+        "phase2": {
+          "who_file_names": [
+            "ICTRP-Results2"
+          ],
+          "who_lynx_names": "ICTRP-Results2;phase2.txt"
+        },
+        "phase3": {
+          "who_file_names": [
+            "ICTRP-Results3"
+          ],
+          "who_lynx_names": "ICTRP-Results3;phase3.txt"
+        },
+        "phase4": {
+          "who_file_names": [
+            "ICTRP-Results4"
+          ],
+          "who_lynx_names": "ICTRP-Results4;phase4.txt"
+        }
+      },
+      "who_delta_load_filter": {
+        "who_file_names": [
+          "ICTRP-Results_delta_load"
+        ],
+        "who_lynx_names": "ICTRP-Results_delta_load;delta_load.txt"
+      },
+      "who_full_load_filter": {
+        "who_file_names": [
+          "ICTRP-Results_full_load"
+        ],
+        "who_lynx_names": "ICTRP-Results_full_load;full_load.txt"
+      },
+      "execution_module": "DataIngestionAdapter"
+    },
+    "trialtrove": {
+      "cluster_type": "small",
+      "get_token_url": "https://identity.pharmaintelligence.informa.com/connect/token",
+      "delta_refresh": "feed/trial/changes",
+      "token_header": "Basic Y3VzdG9tZXJfYXBpX2NsaWVudF9uYXRpdmU6NTIwNzhjMGItMTI5Mi00MGVhLWFkYjAtOWE4MWY4OGNjZDMy",
+      "token_pay_load": {
+        "username": "arushi.jain@zs.com",
+        "scope": "customer-api",
+        "password": "ctfo_2020",
+        "grant_type": "password"
+      },
+      "search_api_url": "search/trial",
+      "full_load": "feed/trial",
+      "host_url": "https://api.pharmaintelligence.informa.com/v1/",
+      "execution_module": "DataIngestionAdapter"
+    },
+    "organization": {
+      "bearer_token": "",
+      "schema_path": "",
+      "parquet_query": "",
+      "cluster_type": "small",
+      "get_token_url": "https://identity.pharmaintelligence.informa.com/connect/token",
+      "delta_refresh": "feed/organization/changes",
+      "token_header": "Basic Y3VzdG9tZXJfYXBpX2NsaWVudF9uYXRpdmU6NTIwNzhjMGItMTI5Mi00MGVhLWFkYjAtOWE4MWY4OGNjZDMy",
+      "token_pay_load": {
+        "username": "arushi.jain@zs.com",
+        "scope": "customer-api",
+        "password": "ctfo_2020",
+        "grant_type": "password"
+      },
+      "search_api_url": "search/organization",
+      "full_load": "feed/organization",
+      "host_url": "https://api.pharmaintelligence.informa.com/v1/",
+      "execution_module": "DataIngestionAdapter"
+    },
+    "pharmaprojects": {
+      "bearer_token": "",
+      "schema_path": "",
+      "parquet_query": "",
+      "cluster_type": "small",
+      "get_token_url": "https://identity.pharmaintelligence.informa.com/connect/token",
+      "delta_refresh": "feed/drug/changes",
+      "token_header": "Basic Y3VzdG9tZXJfYXBpX2NsaWVudF9uYXRpdmU6NTIwNzhjMGItMTI5Mi00MGVhLWFkYjAtOWE4MWY4OGNjZDMy",
+      "token_pay_load": {
+        "username": "arushi.jain@zs.com",
+        "scope": "customer-api",
+        "password": "ctfo_2020",
+        "grant_type": "password"
+      },
+      "search_api_url": "search/drug",
+      "full_load": "feed/drug",
+      "host_url": "https://api.pharmaintelligence.informa.com/v1/",
+      "execution_module": "DataIngestionAdapter"
+    },
+    "investigator": {
+      "bearer_token": "",
+      "schema_path": "",
+      "parquet_query": "",
+      "cluster_type": "small",
+      "get_token_url": "https://identity.pharmaintelligence.informa.com/connect/token",
+      "delta_refresh": "feed/investigator/changes",
+      "token_header": "Basic Y3VzdG9tZXJfYXBpX2NsaWVudF9uYXRpdmU6NTIwNzhjMGItMTI5Mi00MGVhLWFkYjAtOWE4MWY4OGNjZDMy",
+      "token_pay_load": {
+        "username": "arushi.jain@zs.com",
+        "scope": "customer-api",
+        "password": "ctfo_2020",
+        "grant_type": "password"
+      },
+      "search_api_url": "search/investigator",
+      "full_load": "feed/investigator",
+      "host_url": "https://api.pharmaintelligence.informa.com/v1/",
+      "execution_module": "DataIngestionAdapter"
+    },
+    "aact": {
+      "bearer_token": "",
+      "schema_path": "",
+      "parquet_query": "",
+      "cluster_type": "small",
+      "emr_region_name": "us-east-1",
+      "aact_db_name": "aact",
+      "target_hdfs_path": "s3://$$s3_bucket_name/temp/",
+      "aact_host_name": "aact-db.ctti-clinicaltrials.org",
+      "aact_port_number": "5432",
+      "aact_username": "rakeshaact",
+      "acct_password": "YWFjdF8yMDIy",
+      "query": "",
+      "lastValue": "",
+      "aact_column_datatype_mapping": {
+        "calculated_values": {
+          "nlm_download_date": "String"
+        },
+        "studies": {
+          "study_first_submitted_date": "String",
+          "results_first_submitted_date": "String",
+          "disposition_first_submitted_date": "String",
+          "last_update_submitted_date": "String",
+          "study_first_submitted_qc_date": "String",
+          "study_first_posted_date": "String",
+          "results_first_submitted_qc_date": "String",
+          "results_first_posted_date": "String",
+          "disposition_first_submitted_qc_date": "String",
+          "disposition_first_posted_date": "String",
+          "disposition_first_posted_date_type": "String",
+          "last_update_submitted_qc_date": "String",
+          "last_update_posted_date": "String",
+          "start_date": "String",
+          "verification_date": "String",
+          "completion_date": "String",
+          "primary_completion_date": "String",
+          "created_at": "String",
+          "updated_at": "String"
+        },
+        "outcome_analyses": {
+          "param_value": "String",
+          "dispersion_value": "String",
+          "ci_percent": "String",
+          "ci_lower_limit": "String",
+          "ci_upper_limit": "String"
+        },
+        "outcome_measurements": {
+          "param_value_num": "String",
+          "dispersion_value_num": "String",
+          "dispersion_lower_limit": "String",
+          "dispersion_upper_limit": "String"
+        },
+        "outcomes": {
+          "anticipated_posting_date": "String"
+        }
+      },
+      "aact_table_names": [
+        "baseline_counts",
+        "baseline_measurements",
+        "brief_summaries",
+        "browse_conditions",
+        "browse_interventions",
+        "calculated_values",
+        "central_contacts",
+        "conditions",
+        "countries",
+        "design_group_interventions",
+        "design_groups",
+        "design_outcomes",
+        "designs",
+        "detailed_descriptions",
+        "documents",
+        "drop_withdrawals",
+        "eligibilities",
+        "facilities",
+        "facility_contacts",
+        "facility_investigators",
+        "id_information",
+        "intervention_other_names",
+        "interventions",
+        "keywords",
+        "links",
+        "milestones",
+        "outcome_analyses",
+        "outcome_analysis_groups",
+        "outcome_counts",
+        "outcome_measurements",
+        "outcomes",
+        "overall_officials",
+        "participant_flows",
+        "pending_results",
+        "reported_events",
+        "responsible_parties",
+        "result_agreements",
+        "result_contacts",
+        "result_groups",
+        "sponsors",
+        "studies",
+        "study_references"
+      ]
+    }
+  }
+}
