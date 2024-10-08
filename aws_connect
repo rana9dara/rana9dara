@@ -9,12 +9,11 @@ session = boto3.Session(
 s3 = session.client('s3')
 
 # List objects in the bucket
+file_names = list()
 response = s3.list_objects(Bucket='my-bucket',Prefix='prefix')
 for obj in response['Contents']:
     print(obj['Key'])
-
-# Upload a file to the bucket
-s3.upload_file('local_file.txt', 'my-bucket', 'remote_file.txt')
+    file_names.append(obj['Key'])
 
 # Download a file from the bucket
 s3.download_file('my-bucket', 'remote_file.txt', 'local_file.txt')
