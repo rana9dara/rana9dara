@@ -1,6 +1,19 @@
+#event notification on target s3 - SNS
+#use snowflake SQS
+
+#creating integration
+CREATE STORAGE INTEGRATION <my_s3_integration>
+  TYPE = EXTERNAL_STAGE
+  STORAGE_PROVIDER = 'S3'
+  ENABLED = TRUE
+  STORAGE_AWS_ROLE_ARN = '<iam_role>'
+  STORAGE_ALLOWED_LOCATIONS = ('<protocol>://<bucket>/<path>/', '<protocol>://<bucket>/<path>/')
+  [ STORAGE_BLOCKED_LOCATIONS = ('<protocol>://<bucket>/<path>/', '<protocol>://<bucket>/<path>/') ]
+
 #creating stage
 CREATE STAGE my_s3_stage
 URL='s3://your-bucket-name'
+STORAGE_INTEGRATION = my_s3_integration
 CREDENTIALS=(AWS_KEY_ID='your_access_key_id' AWS_SECRET_KEY='your_secret_access_key');
 
 #creating SnowPipe
@@ -9,6 +22,11 @@ AUTO_INGEST=TRUE
 SOURCE=(TYPE=CSV FORMAT=(FIELD_DELIMITER=',') FIELD_OPTION=(TRIM_SPACE=TRUE))
 TARGET=(TABLE=my_target_table)
 STAGE='my_s3_stage';
+
+#load from stage to target
+COPY INTO my_target_table
+FROM (SELECT * FROM my_s3_stage)
+FILE_FORMAT=(TYPE=CSV FIELD_DELIMITER=',');
 
 #Load from stage
 COPY INTO my_target_table
