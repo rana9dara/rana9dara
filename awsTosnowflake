@@ -27,8 +27,3 @@ STAGE='my_s3_stage';
 COPY INTO my_target_table
 FROM (SELECT * FROM my_s3_stage)
 FILE_FORMAT=(TYPE=CSV FIELD_DELIMITER=',');
-
-#Load from stage
-COPY INTO my_target_table
-FROM (SELECT * FROM my_s3_stage)
-FILE_FORMAT=(TYPE=CSV FIELD_DELIMITER=',');
